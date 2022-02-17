@@ -1,0 +1,81 @@
+{
+  "name": "workspacestats",
+	"displayName": "Workspace Stats",
+	"description": "An extension to provide extra information about workspace",
+	"version": "0.0.1",
+	"icon": "resources/icon.png",
+	"publisher": "hwndmaster",
+  "author": {
+    "name": "D Kravtsov"
+  },
+	"license": "MIT",
+	"homepage": "https://github.com/hwndmaster/vscode_workspacestats",
+	"bugs": {
+		"url": "https://github.com/hwndmaster/vscode_workspacestats/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hwndmaster/vscode_workspacestats"
+	},
+	"engines": {
+		"vscode": "^1.64.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"workspace",
+		"file",
+		"size"
+	],
+	"activationEvents": [
+        "onCommand:workspacestats.filesizes"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "workspacestats.filesizes",
+				"title": "Workspace Stats: File Sizes"
+			}
+		],
+		"configuration": [
+			{
+				"title": "Workspace Stats Configuration",
+				"properties": {
+					"workspacestats.filesizes.maxPathLen": {
+						"type": "number",
+						"default": 90,
+						"description": "Maximum length of the path to populate"
+					},
+					"workspacestats.filesizes.minFileSize": {
+						"type": "number",
+						"default": 10000,
+						"description": "Minimum file size to be shown in the statistics, in bytes"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.64.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^5.9.1",
+		"@typescript-eslint/parser": "^5.9.1",
+		"eslint": "^8.6.0",
+		"glob": "^7.2.0",
+		"mocha": "^9.1.3",
+		"typescript": "^4.5.4",
+		"@vscode/test-electron": "^2.0.3"
+	}
+}
